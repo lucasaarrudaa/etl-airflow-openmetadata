@@ -1,0 +1,30 @@
+source:
+  type: airflow
+  serviceName: airflow_source
+  serviceConnection:
+    config:
+      type: Airflow
+      hostPort: http://localhost:8080
+      numberOfStatus: 10
+      connection:
+        type: Postgresql
+        username: admin
+        authType:
+          password: admin
+        databaseSchema: public
+        hostPort: localhost:5432
+  sourceConfig:
+    config:
+      type: PipelineMetadata
+
+sink:
+  type: metadata-rest
+  config: {}
+
+workflowConfig:
+  loggerLevel: INFO  # DEBUG, INFO, WARN or ERROR
+  openMetadataServerConfig:
+    hostPort: http://localhost:8585/api
+    authProvider: openmetadata
+    securityConfig:
+      jwtToken: <your_jwt_token_here>

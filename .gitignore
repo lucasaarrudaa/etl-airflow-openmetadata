@@ -1,0 +1,6 @@
+docker-volume/
+docker-etl-postgres/csv_data/
+ingestion-volume-dag-airflow/
+ingestion-volume-tmp/
+
+.env
